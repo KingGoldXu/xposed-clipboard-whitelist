@@ -5,7 +5,9 @@ plugins {
 android {
     signingConfigs {
         debug {
-            keyPassword '1'
+            keyPassword '123456'
+            storeFile file('C:\\Android\\.android\\debug.keystore')
+            storePassword '123456'
         }
         release {
             storeFile file('C:\\Users\\Corinthe\\projs\\clipmod\\keys\\my-release-key.keystore')
@@ -14,14 +16,14 @@ android {
             keyPassword '123456'
         }
     }
-    compileSdk 32
+    compileSdk 34
 
     defaultConfig {
         applicationId "sh.tablet.bgclipboard"
-        minSdk 30
-        targetSdk 32
+        minSdk 32
+        targetSdk 34
         versionCode 1
-        versionName "1.1"
+        versionName "1.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.release
