@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("已允许app"); // 设置标题
+        setTitle(R.string.app_name); // 设置标题
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -47,13 +47,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void showAddItemDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("添加新项");
+        builder.setTitle(R.string.add_package);
 
         final EditText input = new EditText(this);
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         builder.setView(input);
 
-        builder.setPositiveButton("添加", (dialog, which) -> {
+        builder.setPositiveButton(R.string.ok, (dialog, which) -> {
             String newItem = input.getText().toString();
             if (!newItem.isEmpty()) {
                 data.add(newItem);
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 adapter.notifyItemInserted(data.size() - 1);
             }
         });
-        builder.setNegativeButton("取消", (dialog, which) -> dialog.cancel());
+        builder.setNegativeButton(R.string.cancel, (dialog, which) -> dialog.cancel());
 
         builder.show();
     }

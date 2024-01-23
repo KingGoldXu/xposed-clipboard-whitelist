@@ -2,5 +2,8 @@
     <string name="app_name">BG clipboard</string>
     <string name="item_placeholder">Item</string>
     <string name="del_button">Delete</string>
-    <string name="add_item">Add a new item</string>
+    <string name="add_package">Add a new package name</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="description">Allow the Corresponding APPs to Read the Clipboard in Background. You Can Customize it by Modifying the Package List.</string>
 </resources>
