@@ -21,6 +21,9 @@
         <meta-data
             android:name="xposedsharedprefs"
             android:value="true" />
+        <meta-data
+            android:name="xposedscope"
+            android:value="android" />
 
         <activity android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
