@@ -62,6 +62,33 @@ public class BGClipboard implements IXposedHookLoadPackage {
                             }
                         }
                     });
+            Class<?> clazz = XposedHelpers.findClassIfExists("com.android.server.clipboard.ClipboardServiceExtImpl",
+                    lpparam.classLoader);
+            if(clazz != null) {
+                XposedHelpers.findAndHookMethod(clazz,
+                        "hookGetPrimaryClipResult",
+                        "android.content.Context",
+                        "android.content.ClipData",
+                        "android.app.AppOpsManager",
+                        String.class,
+                        int.class,
+                        int.class,
+                        int.class,
+                        int.class,
+                        new XC_MethodHook() {
+                            @Override
+                            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                                try {
+                                    String packageName = (String) param.args[3];
+                                    if (allowedPackages.contains(packageName)) {
+                                        param.setResult(param.args[1]);
+                                    }
+                                } catch (Throwable t) {
+                                    Log.e(logTag, "Something wrong when hooking hookGetPrimaryClipResult", t);
+                                }
+                            }
+                        });
+            }
         }
     }
 }
