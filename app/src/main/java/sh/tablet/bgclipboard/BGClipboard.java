@@ -21,7 +21,7 @@ public class BGClipboard implements IXposedHookLoadPackage {
     private static final String logTag = "===tablettttttt===";
     private static final String clipboardService = "com.android.server.clipboard.ClipboardService";
     private static XSharedPreferences getPref(String path) {
-        XSharedPreferences pref = new XSharedPreferences("sh.tablet.bgclipboard", path);
+        XSharedPreferences pref = new XSharedPreferences(BuildConfig.APPLICATION_ID, path);
         return pref.getFile().canRead() ? pref : null;
     }
     private static List<String> allowedPackages = new ArrayList<>(Arrays.asList("com.fooview.android.fooview", "com.baidu.input_oppo"));
